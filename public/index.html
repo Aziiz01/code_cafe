@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi QR Code Generator</title>
+</head>
+<body>
+    <h1>Generate Wi-Fi QR Code</h1>
+    <form action="/generate-wifi-qr" method="get">
+        <label for="ssid">SSID:</label>
+        <input type="text" id="ssid" name="ssid" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required>
+        <br>
+        <label for="type">Type (WPA/WEP):</label>
+        <input type="text" id="type" name="type" value="WPA">
+        <br>
+        <button type="submit">Generate QR Code</button>
+    </form>
+</body>
+</html>
