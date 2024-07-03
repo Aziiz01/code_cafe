@@ -6,6 +6,22 @@ const coffeSchema = new Schema({
         type : String,
         required: true
     },
+    coffe_responsable: {
+        type : String,
+        required: true
+    },
+    num_tel: {
+        type : Number,
+        required: true
+    },
+    next_payment :{
+        type : String,
+        required: true
+    },
+    location : {
+        type : String,
+        required: true
+    },
     description : {
         type : String,
         required: true

@@ -20,6 +20,10 @@ export function addCoffe (req, res){
   // Save the coffee details to the database
   coffe.create({
       code_wifi: req.body.code_wifi,
+      coffe_responsable: req.body.coffe_responsable,
+      num_tel: req.body.num_tel,
+      next_payment: req.body.next_payment,
+      location: req.body.location,
       coffe_name :req.body.coffe_name,
       description : req.body.description,
       ssid: req.body.ssid,
@@ -34,6 +38,10 @@ export function addCoffe (req, res){
   .then((newCoffe) => {
       res.status(201).json({
           code_wifi: newCoffe.code_wifi,
+          coffe_responsable: newCoffe.coffe_responsable,
+          num_tel: newCoffe.num_tel,
+          next_payment: newCoffe.next_payment,
+          location: newCoffe.location,
           coffe_name : newCoffe.coffe_name,
           description : newCoffe.description,
           ssid : newCoffe.ssid,
