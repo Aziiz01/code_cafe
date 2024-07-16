@@ -1,6 +1,7 @@
 import express from 'express';
-import { addCoffeHandler, getOnceHandler, getAllHandler, QrCodesHandler } from '../controllers/coffeController.js';
+import { addCoffeHandler, getOnceHandler, getAllHandler, QrCodesHandler, updateCoffeHandler, deleteCoffeHandler } from '../controllers/coffeController.js';
 import multer from 'multer';
+import { updateCoffe } from '../services/coffeServices.js';
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -9,6 +10,8 @@ const router = express.Router();
 
 router.post('/coffes', upload.fields([{ name: 'menu', maxCount: 1 }, { name: 'logo', maxCount: 1 }]), addCoffeHandler);
 router.get('/coffes/:id', getOnceHandler);
+router.put('/coffes/update/:id', updateCoffeHandler);
+router.delete('/coffes/delete/:id', deleteCoffeHandler);
 router.get('/coffes', getAllHandler);
 router.get('/qrcodes', QrCodesHandler);
 

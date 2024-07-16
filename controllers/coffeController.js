@@ -1,6 +1,6 @@
 import { validationResult } from 'express-validator';
 import Qrcode from 'qrcode';
-import { addCoffe, getCoffeById, getAllCoffes } from '../services/coffeServices.js';
+import { addCoffe, getCoffeById, getAllCoffes , deleteCoffe , updateCoffe } from '../services/coffeServices.js';
 import { db, storage } from '../firebase.js';
 
 export async function addCoffeHandler(req, res) {
@@ -56,7 +56,27 @@ export async function addCoffeHandler(req, res) {
       res.status(500).json({ error: 'Error saving coffee details to database' });
     }
   }
-
+  export async function updateCoffeHandler(req, res) {
+    try {
+      const id = req.params.id;
+      const updatedData = req.body;
+      await updateCoffe(id, updatedData);
+      res.status(200).json({ id, ...updatedData });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  
+  export async function deleteCoffeHandler(req, res) {
+    try {
+      const id = req.params.id;
+      await deleteCoffe(id);
+      res.status(204).end();
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  
   
 export async function getOnceHandler(req, res) {
   try {

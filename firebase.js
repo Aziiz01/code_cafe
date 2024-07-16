@@ -2,8 +2,9 @@ import admin from 'firebase-admin';
 import { initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase/storage';
+import { fileURLToPath } from 'url';
 
-import path from 'path';
+import {resolve  , dirname} from 'path';
 import fs from 'fs';
 
 // Your Firebase configuration
@@ -17,7 +18,10 @@ const firebaseConfig = {
     measurementId: "G-4FSMDKMG3Q"
   };
 // Construct the path to your service account JSON file
-const serviceAccountPath = path.resolve("C:/Users/salah/CodeCafe-backend/code_cafe", 'codecafe-2d38c-firebase-adminsdk-zi2lx-a24e8cd817.json');
+const __filename = fileURLToPath(import.meta.url);
+// Get the directory name of the current module
+const __dirname = dirname(__filename);
+const serviceAccountPath = resolve(__dirname, 'codecafe-2d38c-firebase-adminsdk-zi2lx-a24e8cd817.json');
 
 // Read the service account JSON file
 const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf8'));
