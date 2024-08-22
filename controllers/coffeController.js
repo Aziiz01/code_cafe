@@ -56,6 +56,16 @@ export async function addCoffeHandler(req, res) {
       res.status(500).json({ error: 'Error saving coffee details to database' });
     }
   }
+
+  export async function getOnceHandler(req, res) {
+    try {
+      const doc = await getCoffeById(req.params.id);
+      res.status(200).json(doc);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  
   export async function updateCoffeHandler(req, res) {
     try {
       const id = req.params.id;
@@ -78,14 +88,7 @@ export async function addCoffeHandler(req, res) {
   }
   
   
-export async function getOnceHandler(req, res) {
-  try {
-    const doc = await getCoffeById(req.params.id);
-    res.status(200).json(doc);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-}
+
 
 export async function getAllHandler(req, res) {
   try {
